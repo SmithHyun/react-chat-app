@@ -1,0 +1,48 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+## frontend ##
+/frontend/node_modules
+/frontend/.pnp
+/frontend/.pnp.js
+## backeend ##
+/backend/node_modules
+
+# testing
+## frontend ##
+/frontend/coverage
+
+# production
+## frontend ##
+/frontend/build
+
+# misc
+## frontend ##
+/frontend/.DS_Store
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+## frontend ##
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+## frontend ##
+/frontend/package-lock.json
+## backeend ##
+/backend/package-lock.json
+
+
+## Add list in localstorage ##
+frontend/src/setupTests.js
+frontend/src/serviceWorker.js
+frontend/src/logo.svg
+frontend/src/App.test.js
+frontend/public/logo512.png
+frontend/public/logo192.png
+backend/public/stylesheets/style.css
+frontend/.gitignore
+frontend/README.md
+frontend/public/favicon.ico
