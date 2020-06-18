@@ -1,0 +1,6 @@
+{
+    "db":{
+        "dbName":"reactchatting",
+        "url": "mongodb://localhost:27017"
+    }
+}
