@@ -1,20 +1,27 @@
 import React from 'react';
-import {
-    ListGroup, ListGroupItem, Card, CardImg, CardText, CardBody,
-    Button, CardTitle, CardSubtitle, Label, Jumbotron
-} from 'reactstrap';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Button, Label, Jumbotron } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle } from 'reactstrap';
 
 export default function HomeMenu() {
     const style = {
-        backgroundColor: 'white',
-        padding: '16px',
-        color: 'black',
-        fontSize: '34px'
+        p: {
+            padding: '10px',
+        },
+        ref: {
+            backgroundColor: 'white',
+            padding: '16px',
+            color: 'black',
+            fontSize: '34px',
+            marginTop: '10px',
+            border: '10px solid black',
+        }
     };
     return (
+        <div style={style.p}>
         <Card>
             <CardBody>
-                <h1 align="center" style={style}>Home</h1>
+                <h1 align="center" >Home</h1>
                 <ListGroup align="center">
                     <ListGroupItem tag="a" href="./about" action>My profile</ListGroupItem>
                     <ListGroupItem tag="a" href="./about" action>My message</ListGroupItem>
@@ -22,5 +29,6 @@ export default function HomeMenu() {
                 </ListGroup>
             </CardBody>
         </Card>
+        </div>
     );
 };
