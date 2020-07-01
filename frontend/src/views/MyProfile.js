@@ -1,14 +1,13 @@
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Button, Label, Jumbotron } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+import { Button } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
+import { InputGroup, Input } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import qs from 'qs';
 import { Alert } from 'reactstrap';
+import store from '../store';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -22,15 +21,14 @@ export default function MyProfile() {
         setMessageAlert("");
     }
 
-    let history = useHistory();
+    // let history = useHistory();
 
     const style = {
         p: {
             padding: '10px',
         },
         button: {
-            marginTop: '10px',
-            width: '120px',
+            width: '100px',
         },
         card: {
             marginTop: '10px',
@@ -38,10 +36,6 @@ export default function MyProfile() {
         alert: {
             marginTop: '30px',
         }
-    };
-
-    const goBack = () => {
-        history.goBack();
     };
 
     const handleSummit = (event) => {
@@ -72,9 +66,17 @@ export default function MyProfile() {
                 if (response.result === true) {
                     setColorAlert("info");
                     setMessageAlert("User is registered.");
-                    setTimeout(function () {
-                        history.push('/');
-                    }, 2000);
+
+                    // Save userID in redux store
+                    store.dispatch({ type: 'CREATE_USER', user: userName });
+                    console.log({ type: 'CREATE_USER', user: userName });
+                    //document.getElementById("buttonSave").style.display = 'none';
+                    document.getElementById("buttonSave").disabled = true;
+                    document.getElementById("userName").readOnly = true;
+
+                    // setTimeout(function () {
+                    //     history.push('/');
+                    // }, 2000);
                 } else {
                     setMessageAlert("User registration failed.");
                 }
@@ -87,28 +89,13 @@ export default function MyProfile() {
                 <CardBody>
                     <Container>
                         <Row>
-                            <Col xs="2" align="left" >
-                                <Button onClick={goBack} color="secondary" size="sm" style={style.p} >Prev</Button>
-                            </Col>
                             <Col xs="8">
-                                <h1 align="center">My profile</h1>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs="12">
-                                <h6 align="left">Chat ID</h6>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col xs="12">
                                 <InputGroup>
-                                    <Input id="userName" placeholder="username" />
+                                    <Input id="userName" placeholder="Chat ID" />
                                 </InputGroup>
                             </Col>
-                        </Row>
-                        <Row align="right">
-                            <Col xs="12">
-                                <Button onClick={handleSummit} color="secondary" style={style.button}>SAVE</Button>
+                            <Col xs="2">
+                                <Button id="buttonSave" onClick={handleSummit} color="secondary" style={style.button}>SAVE</Button>
                             </Col>
                         </Row>
                         {(messageAlert === "") ? "" :

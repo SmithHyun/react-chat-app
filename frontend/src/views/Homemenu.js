@@ -1,7 +1,11 @@
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Button, Label, Jumbotron } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle } from 'reactstrap';
+import { ListGroup } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
+import { useState, useEffect } from 'react';
+import store from '../store';
+import MyProfile from './MyProfile';
+import ChattingRooms from './ChattingRooms';
+
 
 const style = {
     p: {
@@ -18,15 +22,29 @@ const style = {
 };
 
 export default function HomeMenu() {
+    const [currUser, setCurrUser] = useState();
+    useEffect(() => {
+        console.log("useEffect did");
+        console.log(store.getState().user);
+        setCurrUser(store.getState().user);
+
+        store.subscribe(function(){
+            console.log("I think, this is a problem");
+            setCurrUser(store.getState().user)
+        });
+    }, []);
+
     return (
         <div style={style.p}>
         <Card>
             <CardBody>
                 <h1 align="center" >Home</h1>
                 <ListGroup align="center">
-                    <ListGroupItem tag="a" href="./myprofile" action>My profile</ListGroupItem>
-                    <ListGroupItem tag="a" href="./mymessages" action>My message</ListGroupItem>
-                    <ListGroupItem tag="a" href="./chattingrooms" action>Chatting Rooms</ListGroupItem>
+                    My Chat ID : [{currUser}]
+                    <MyProfile></MyProfile>
+                    {/* <ListGroupItem tag="a" href="./mymessages" action>My message</ListGroupItem> */}
+                    {/* <MyMessages></MyMessages> */}
+                    <ChattingRooms></ChattingRooms>
                 </ListGroup>
             </CardBody>
         </Card>

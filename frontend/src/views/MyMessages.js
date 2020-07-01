@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { Button, Label, Jumbotron } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody,CardTitle, CardSubtitle } from 'reactstrap';
+import { Button } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import { Badge } from 'reactstrap';
 
