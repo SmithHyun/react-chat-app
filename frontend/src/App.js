@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import About from './views/About';
-import HomeMenu from './views/HomeMenu';
+import HomeMenu from './views/Homemenu';
 import MyProfile from './views/MyProfile';
 import MyMessages from './views/MyMessages';
 import ChattingRooms from './views/ChattingRooms';
