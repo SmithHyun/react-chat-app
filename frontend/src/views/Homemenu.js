@@ -21,6 +21,7 @@ const style = {
     }
 };
 
+
 export default function HomeMenu() {
     const [currUser, setCurrUser] = useState();
     useEffect(() => {
